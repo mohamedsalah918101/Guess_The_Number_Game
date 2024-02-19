@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import kotlin.random.Random
 import kotlin.random.nextInt
-import kotlin.collections.mutableListOf as mutableListOf
+
 
 class firstFragment : Fragment() {
 
@@ -45,7 +45,12 @@ class firstFragment : Fragment() {
             imageView.setOnClickListener {
                 if (number == randomNumber) {
                     imageView.setImageResource(R.drawable.correct)
-
+                    // Disable click for all other images
+                    for (iv in imageViews) {
+                        if (iv != imageView) {
+                            iv.isClickable = false
+                        }
+                    }
                 }
                 else{
                     imageView.setImageResource(R.drawable.wrong)
